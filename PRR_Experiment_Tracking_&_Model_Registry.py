@@ -3,6 +3,7 @@ import pandas as pd
 import numpy as np
 import random
 from ast import literal_eval
+import pickle
 
 from sklearn.metrics.pairwise import cosine_similarity
 from sklearn.feature_extraction.text import TfidfVectorizer
@@ -25,24 +26,26 @@ EMBEDDING_OUT_DIM = 300
 LSTM_UNITS = 128
 # MAX_SEQUENCE_LENGTH = 100
 
-path_base = '/teamspace/studios/this_studio/Personalized_Recipe_Recommender/dataset/'
+path_base_dataset = '/teamspace/studios/this_studio/Personalized_Recipe_Recommender/dataset/'
+path_base_artifacts = '/teamspace/studios/this_studio/Personalized_Recipe_Recommender/artifacts/'
 
 file_name_sampled_data = 'sampled_dataset_' + str(NUM_DATA_SAMPLES) + '.csv'
-sampled_data_file_path = path_base + file_name_sampled_data
+sampled_data_file_path = path_base_dataset + file_name_sampled_data
 
 file_name_simulated_data = 'simulated_user_input_' + str(NUM_INGREDIENTS_COMBINATIONS) + '.csv'
-simulated_data_file_path = path_base + file_name_simulated_data
+simulated_data_file_path = path_base_dataset + file_name_simulated_data
 
-mlflow.set_tracking_uri("sqlite:///mlflow.db")
+# mlflow.set_tracking_uri("sqlite:///mlflow.db")
 
 # MLflow settings
 # S3_BUCKET_NAME = "mlops-zoomcamp-prr"
 MLFLOW_TRACKING_URI = 'http://127.0.0.1:5000'
-EXPERIMENT_NAME = "Personalized Recipe Recommender - Experiment Tracking & Model Registry"
+# EXPERIMENT_NAME = "Personalized Recipe Recommender - Experiment Tracking & Model Registry"
+EXPERIMENT_NAME = "PRR_for_Testing_Code"
 # mlflow.set_tracking_uri(uri="http://127.0.0.1:5000")
 mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
-# mlflow.set_experiment("Personalized Recipe Recommender - Experiment Tracking & Model Registry")
-experiment_id = mlflow.create_experiment(EXPERIMENT_NAME)
+mlflow.set_experiment(EXPERIMENT_NAME)
+# experiment_id = mlflow.create_experiment(EXPERIMENT_NAME)
 mlflow.set_experiment(EXPERIMENT_NAME)
 client = MlflowClient(MLFLOW_TRACKING_URI)
 
@@ -70,6 +73,25 @@ def tokenize_data(X_train: pd.DataFrame):
     max_sequence_length = int(np.percentile(sequence_lengths, 90))
 
     ingredient_sequences_padded = pad_sequences(ingredient_sequences, maxlen=max_sequence_length)
+
+    # Combine tokenizer and max_sequence_length into a dictionary
+    tokenizer_info_data = {
+        'tokenizer': tokenizer,
+        'max_sequence_length': max_sequence_length
+    }
+
+    # Save the tokenizer
+    if not os.path.exists(path_base_artifacts):
+        os.makedirs(path_base_artifacts)
+    
+    tokenizer_path = path_base_artifacts + 'tokenizer_info.pickle'
+    # tokenizer_path = 'tokenizer.pickle'
+    if not os.path.exists(tokenizer_path):
+        with open(tokenizer_path, 'wb') as handle:
+            pickle.dump(tokenizer_info_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
+        mlflow.log_artifact(tokenizer_path)
+    else:
+        print(f"The file '{tokenizer_path}' already exists.") 
 
     return max_sequence_length, ingredient_sequences_padded, embeddings_input_dimension
 
@@ -145,21 +167,22 @@ def preprocess_X_train(X_train: pd.DataFrame):
 
 
 def model_experiment_tracking(X_train, y_train, MAX_SEQUENCE_LENGTH, EMBEDDING_IN_DIM):
-
-    # Define hyperparameters to try
-    batch_size_list = [32, 50] # default tested is batch_size=32
-    # activation_list = ['relu', 'tanh', 'sigmoid'] # default tested is activation_func=sigmoid
-    epochs_list = [10, 25] # default tested is epochs=10
-    optimizers_list = ['adam', 'sgd', 'rmsprop'] # default tested is optimizer=adam
-    lstm_units_list = [128, 256] # default tested is lstm_units=128
     
+    mlflow.autolog()
 
-    # # default hyperparameters
-    # batch_size_list = [32] # default tested is batch_size=32
+    # # Define hyperparameters to try
+    # batch_size_list = [32, 50] # default tested is batch_size=32
+    # # activation_list = ['relu', 'tanh', 'sigmoid'] # default tested is activation_func=sigmoid
+    # epochs_list = [10, 25] # default tested is epochs=10
+    # optimizers_list = ['adam', 'sgd', 'rmsprop'] # default tested is optimizer=adam
+    # lstm_units_list = [128, 256] # default tested is lstm_units=128
+    
+    # default hyperparameters
+    batch_size_list = [32] # default tested is batch_size=32
     # activation_list = ['tanh'] # default tested is activation_func=sigmoid
-    # epochs_list = [10] # default tested is epochs=10
-    # optimizers_list = ['adam'] # default tested is optimizer=adam
-    # lstm_units_list = [128]
+    epochs_list = [10] # default tested is epochs=10
+    optimizers_list = ['adam'] # default tested is optimizer=adam
+    lstm_units_list = [128]
 
 
     for batch_size in batch_size_list:
@@ -172,7 +195,7 @@ def model_experiment_tracking(X_train, y_train, MAX_SEQUENCE_LENGTH, EMBEDDING_I
                         "num_epochs": epochs,
                         "optimizer_type": optimizer
                     }
-                    with mlflow.start_run(experiment_id=experiment_id):
+                    with mlflow.start_run():
                         mlflow.set_tags(tags=tags)
                         
                         mlflow.log_params(
