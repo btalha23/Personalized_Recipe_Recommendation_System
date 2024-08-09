@@ -3,6 +3,7 @@ dataset_full/
 playground_prr/
 mlruns/
 mlartifacts/
+zip_data/
 
 
 # Byte-compiled / optimized / DLL files
