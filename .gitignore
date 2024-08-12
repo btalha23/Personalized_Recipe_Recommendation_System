@@ -4,6 +4,8 @@ playground_prr/
 mlruns/
 mlartifacts/
 zip_data/
+mlflow.db
+results/
 
 
 # Byte-compiled / optimized / DLL files
