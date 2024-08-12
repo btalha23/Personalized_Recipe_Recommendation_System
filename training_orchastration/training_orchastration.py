@@ -28,15 +28,15 @@ EMBEDDING_OUT_DIM = 300
 LSTM_UNITS = 128
 WRITE_TOKENIZER_AS_MLFLOW_ARTIFACT = True
 
-os.chdir('../dataset/')
+os.chdir('dataset/')
 path_base_dataset = os.getcwd()
 print(path_base_dataset)
 
-os.chdir('../artifacts/')
+os.chdir('artifacts/')
 path_base_artifacts = os.getcwd()
 print(path_base_artifacts)
 
-os.chdir('../results/')
+os.chdir('results/')
 path_base_results = os.getcwd()
 print(path_base_results) 
                             
