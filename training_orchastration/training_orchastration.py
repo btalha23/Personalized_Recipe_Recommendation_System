@@ -32,14 +32,18 @@ os.chdir('dataset/')
 path_base_dataset = os.getcwd()
 print(path_base_dataset)
 
-os.chdir('artifacts/')
+os.chdir('../artifacts/')
 path_base_artifacts = os.getcwd()
 print(path_base_artifacts)
 
-os.chdir('results/')
+os.chdir('../results/')
 path_base_results = os.getcwd()
 print(path_base_results) 
-                            
+
+os.chdir('../')
+path_base_root_folder = os.getcwd()
+print(path_base_root_folder) 
+
 file_name_sampled_data = '/sampled_dataset_' + str(NUM_DATA_SAMPLES) + '.csv'
 sampled_data_file_path = path_base_dataset + file_name_sampled_data
 
