@@ -21,14 +21,14 @@ pull:
 
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
-- name: personalized_recipe_recommender_flow
+- name: prr_flow
   version:
   tags: []
   description:
-  entrypoint: model_training_workflow_orchastration.py:main_flow
+  entrypoint: training_orchastration.py:main_flow
   parameters: {}
   work_pool:
-    name: personalized_recipe_recommender_pool
+    name: prr_pool
     work_queue_name:
     job_variables: {}
   schedules: []
