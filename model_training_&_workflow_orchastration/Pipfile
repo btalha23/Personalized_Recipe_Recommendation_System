@@ -1,0 +1,19 @@
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
+
+[packages]
+keras = "==3.4.1"
+keras-preprocessing = "==1.1.2"
+tensorflow = "*"
+scikit-learn = "*"
+mlflow = "*"
+prefect = "==2.20.1"
+prefect-aws = "==0.4.19"
+
+[dev-packages]
+
+[requires]
+python_version = "3.11"
+python_full_version = "3.11.9"
