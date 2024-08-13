@@ -378,21 +378,21 @@ def model_experiment_tracking(X_train,
 
     mlflow.autolog()
 
-    # # # Selected set of hyperparameters
-    # # Define hyperparameters to try
-    # batch_size_list = [50] # default tested is batch_size=32
-    # activation_list = ['sigmoid'] # default tested is activation_func=sigmoid;
-    #                                         # Activation function of the output layer
-    # epochs_list = [100, 150] # default tested is epochs=10
-    # optimizers_list = ['adam', 'sgd', 'rmsprop'] # default tested is optimizer=adam
-    # lstm_units_list = [256] # default tested is lstm_units=128
+    # # Selected set of hyperparameters
+    # Define hyperparameters to try
+    batch_size_list = [50, 100] # default tested is batch_size=32
+    activation_list = ['sigmoid'] # default tested is activation_func=sigmoid;
+                                            # Activation function of the output layer
+    epochs_list = [150, 250] # default tested is epochs=10
+    optimizers_list = ['adam', 'sgd', 'rmsprop'] # default tested is optimizer=adam
+    lstm_units_list = [256, 512] # default tested is lstm_units=128
 
-    # default hyperparameters
-    batch_size_list = [32] # default tested is batch_size=32
-    activation_list = ['sigmoid'] # default tested is activation_func=sigmoid
-    epochs_list = [10] # default tested is epochs=10
-    optimizers_list = ['adam'] # default tested is optimizer=adam
-    lstm_units_list = [128]
+    # # default hyperparameters
+    # batch_size_list = [32] # default tested is batch_size=32
+    # activation_list = ['sigmoid'] # default tested is activation_func=sigmoid
+    # epochs_list = [10] # default tested is epochs=10
+    # optimizers_list = ['adam'] # default tested is optimizer=adam
+    # lstm_units_list = [128]
 
     for activation_func in activation_list:
         for batch_size in batch_size_list:
