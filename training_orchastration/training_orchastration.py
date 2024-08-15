@@ -28,7 +28,7 @@ EMBEDDING_OUT_DIM = 300
 LSTM_UNITS = 128
 WRITE_TOKENIZER_AS_MLFLOW_ARTIFACT = True
 
-os.chdir('dataset/')
+os.chdir('../dataset/')
 path_base_dataset = os.getcwd()
 print(path_base_dataset)
 
@@ -380,12 +380,12 @@ def model_experiment_tracking(X_train,
 
     # # Selected set of hyperparameters
     # Define hyperparameters to try
-    batch_size_list = [50, 100] # default tested is batch_size=32
+    batch_size_list = [100] # default tested is batch_size=32 # for rmsprop add bs50 , epoc150, & lstm256
     activation_list = ['sigmoid'] # default tested is activation_func=sigmoid;
                                             # Activation function of the output layer
-    epochs_list = [150, 250] # default tested is epochs=10
-    optimizers_list = ['adam', 'sgd', 'rmsprop'] # default tested is optimizer=adam
-    lstm_units_list = [256, 512] # default tested is lstm_units=128
+    epochs_list = [250] # default tested is epochs=10 # for rmsprop add bs50 , epoc150, & lstm256
+    optimizers_list = ['adam', 'rmsprop'] # default tested is optimizer=adam
+    lstm_units_list = [512] # default tested is lstm_units=128 # for rmsprop add bs50 , epoc150, & lstm256
 
     # # default hyperparameters
     # batch_size_list = [32] # default tested is batch_size=32
