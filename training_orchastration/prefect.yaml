@@ -3,14 +3,14 @@
 # control along with your flow code.
 
 # Generic metadata about this project
-name: personalized_recipe_recommender
+name: Personalized_Recipe_Recommender
 prefect-version: 2.20.1
 
 # build section allows you to manage and build docker images
-build:
+build: null
 
 # push section allows you to manage if and how this project is uploaded to remote locations
-push:
+push: null
 
 # pull section allows you to provide instructions for cloning this project in remote locations
 pull:
@@ -22,13 +22,13 @@ pull:
 # the deployments section allows you to provide configuration for deploying flows
 deployments:
 - name: prr_flow
-  version:
+  version: null
   tags: []
-  description:
-  entrypoint: training_orchastration.py:main_flow
+  description: null
+  entrypoint: training_orchastration/training_orchastration.py:main_flow
   parameters: {}
   work_pool:
     name: prr_pool
-    work_queue_name:
+    work_queue_name: null
     job_variables: {}
   schedules: []
