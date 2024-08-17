@@ -25,7 +25,7 @@ deployments:
   version: null
   tags: []
   description: null
-  entrypoint: training_orchastration/training_orchastration.py:main_flow
+  entrypoint: training_orchestration/training_orchestration.py:main_flow
   parameters: {}
   work_pool:
     name: prr_pool
