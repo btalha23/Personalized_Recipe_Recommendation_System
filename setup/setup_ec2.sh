@@ -47,4 +47,4 @@ conda install -c conda-forge python=3.11
 
 echo "Installing necessary packages..."
 
-pip install pipenv nltk mlflow prefect boto3 evidently pyarrow psycopg psycopg_binary pytest isort black pylint deepdiff
+pip install pipenv nltk keras keras_preprocessing tensorflow mlflow prefect boto3 evidently pyarrow psycopg psycopg_binary pytest isort black pylint deepdiff
