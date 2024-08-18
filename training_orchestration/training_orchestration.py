@@ -563,7 +563,7 @@ def train_all_data(S3_BUCKET_NAME,
     logger = get_run_logger()
     logger.info("Re-train best model on all data...")
 
-    logged_model = f's3://{S3_BUCKET_NAME}/2/{RUN_ID}/artifacts/model'
+    logged_model = f's3://{S3_BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/model'
     model = mlflow.keras.load_model(logged_model)
 
     with mlflow.start_run() as run:
