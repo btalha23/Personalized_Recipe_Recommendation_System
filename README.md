@@ -23,4 +23,46 @@ In today's digital age, the sheer volume of available recipes can be overwhelmin
 	* The performance metric dictating the selection of the best model is *Mean Absolute Error*.
 4. **Machine Learning Workflow Orchestration:**
 	* A workflow in ML is a sequence of tasks that runs subsequently in the machine learning process. It is ensured that the pipeline is robust and can handle data preprocessing, model training, evaluation, and deployment.
+5. Deployment
+6. Monitoring
 
+
+### Tools & Technologies
+
+- Cloud - [**Amazon Web Services**](https://aws.amazon.com/)
+- Containerization - [**Docker**](https://www.docker.com) and [**Docker Compose**](https://docs.docker.com/compose/)
+- Workflow Orchestration - [**Prefect**](https://www.prefect.io/)
+- Experiment Tracking & Model Management - [**MLflow**](https://mlflow.org/)
+- Model Artifacts Storage - [**Amazon S3**](https://aws.amazon.com/s3/)
+- Model monitoring - [**Evidently AI**](https://www.evidentlyai.com/) and [**Grafana**](https://grafana.com/)
+- Language - [**Python**](https://www.python.org)
+
+
+### Architecture
+
+![architecture](images/architecture.png) TBD
+
+### Exploratory Data Analysis and Modeling
+TBD
+
+### Training Pipeline
+
+![prefect](images/prefect_1.png)
+
+![prefect](images/prefect_2.png)
+
+### Experiment Tracking & Model Registry
+
+![mlflow](images/mlflow_1.png)
+
+![mlflow](images/mlflow_2.png)
+
+![mlflow](images/mlflow_3.png)
+
+### Model Storage
+
+![S3](images/S3_1.png)
+
+![S3](images/S3_2.png)
+
+![S3](images/S3_3.png)
