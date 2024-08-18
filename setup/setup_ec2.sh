@@ -39,6 +39,13 @@ eval "$(cat ~/.bashrc | tail -n +10)"
 echo "docker-compose version..."
 docker-compose --version
 
+echo "Installing AWS CLI..."
+sudo apt install unzip
+cd ~/software && curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip" && unzip awscliv2.zip && sudo ./aws/install
+
+echo "aws cli version..."
+aws --version
+
 echo "Activate conda environment..."
 conda activate
 
