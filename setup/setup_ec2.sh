@@ -13,6 +13,9 @@ bash ~/software/Anaconda3-2024.06-1-Linux-x86_64.sh
 echo "Removing anaconda script..."
 rm ~/software/Anaconda3-2024.06-1-Linux-x86_64.sh
 
+echo "Deactivating conda at startup..."
+conda config --set auto_activate_base false
+
 echo "Running sudo apt-get update..."
 sudo apt update
 
