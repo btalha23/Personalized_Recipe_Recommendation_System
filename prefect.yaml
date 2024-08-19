@@ -16,7 +16,7 @@ push: null
 pull:
 - prefect.deployments.steps.git_clone:
     repository: https://github.com/btalha23/Personalized_Recipe_Recommender.git
-    branch: dev/bt/towards_final_submission # main
+    branch: main
     access_token:
 
 # the deployments section allows you to provide configuration for deploying flows
