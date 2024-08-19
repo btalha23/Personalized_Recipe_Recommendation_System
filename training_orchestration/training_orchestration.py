@@ -378,21 +378,21 @@ def model_experiment_tracking(X_train,
 
     mlflow.autolog()
 
-    # # Selected set of hyperparameters
-    # Define hyperparameters to try
-    batch_size_list = [32] # default tested is batch_size=32 # for rmsprop add bs50 , epoc150, & lstm256
-    activation_list = ['sigmoid'] # default tested is activation_func=sigmoid;
-                                            # Activation function of the output layer
-    epochs_list = [75, 100] # default tested is epochs=10 # for rmsprop add bs50 , epoc150, & lstm256
-    optimizers_list = ['adam', 'rmsprop'] # default tested is optimizer=adam
-    lstm_units_list = [128] # default tested is lstm_units=128 # for rmsprop add bs50 , epoc150, & lstm256
+    # # # Selected set of hyperparameters
+    # # Define hyperparameters to try
+    # batch_size_list = [32] # default tested is batch_size=32 # for rmsprop add bs50 , epoc150, & lstm256
+    # activation_list = ['sigmoid'] # default tested is activation_func=sigmoid;
+    #                                         # Activation function of the output layer
+    # epochs_list = [75, 100] # default tested is epochs=10 # for rmsprop add bs50 , epoc150, & lstm256
+    # optimizers_list = ['adam', 'rmsprop'] # default tested is optimizer=adam
+    # lstm_units_list = [128] # default tested is lstm_units=128 # for rmsprop add bs50 , epoc150, & lstm256
 
-    # # default hyperparameters
-    # batch_size_list = [32] # default tested is batch_size=32
-    # activation_list = ['sigmoid'] # default tested is activation_func=sigmoid
-    # epochs_list = [10] # default tested is epochs=10
-    # optimizers_list = ['adam'] # default tested is optimizer=adam
-    # lstm_units_list = [128]
+    # default hyperparameters
+    batch_size_list = [32] # default tested is batch_size=32
+    activation_list = ['sigmoid'] # default tested is activation_func=sigmoid
+    epochs_list = [10, 25] # default tested is epochs=10
+    optimizers_list = ['adam'] # default tested is optimizer=adam
+    lstm_units_list = [128]
 
     for activation_func in activation_list:
         for batch_size in batch_size_list:
@@ -500,7 +500,7 @@ def model_experiment_tracking(X_train,
                                 with open(tokenizer_path, 'wb') as handle:
                                     pickle.dump(tokenizer_info_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
                                 mlflow.log_artifact(tokenizer_path)
-                                WRITE_TOKENIZER_AS_MLFLOW_ARTIFACT = False
+                                # WRITE_TOKENIZER_AS_MLFLOW_ARTIFACT = False
             
     return run_id, model
 
@@ -563,8 +563,11 @@ def train_all_data(S3_BUCKET_NAME,
     logger = get_run_logger()
     logger.info("Re-train best model on all data...")
 
-    logged_model = f's3://{S3_BUCKET_NAME}/2/{RUN_ID}/artifacts/model'
+    logged_model = f's3://{S3_BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/model'
     model = mlflow.keras.load_model(logged_model)
+    required_tokenizer = f's3://{S3_BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/tokenizer_info.pickle'
+    tokenizer_path = mlflow.artifacts.download_artifacts(required_tokenizer)
+    
 
     with mlflow.start_run() as run:
         
@@ -576,6 +579,7 @@ def train_all_data(S3_BUCKET_NAME,
 
         mlflow.set_tag("model", tag_value)
         mlflow.keras.log_model(model, "model")
+        mlflow.log_artifact(tokenizer_path)
 
         logger.info("Completed training process...")
 

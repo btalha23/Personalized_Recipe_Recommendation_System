@@ -5,6 +5,10 @@ mlruns/
 mlartifacts/
 zip_data/
 mlflow.db
+terraform/setup_ec2/.terraform
+terraform/setup_ec2/.terraform.lock.hcl
+terraform/setup_ec2/terraform.tfstate
+terraform/setup_ec2/terraform.tfstate.backup
 
 
 # Byte-compiled / optimized / DLL files
