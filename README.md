@@ -16,14 +16,19 @@ In today's digital age, the sheer volume of available recipes can be overwhelmin
 2. **Identification of a Comprehensive Dataset & Data Handling:**
 	* Selected Dataset:* The dataset exploited in this project is [RecipeNLG](https://www.kaggle.com/datasets/saldenisov/recipenlg) that is available on Kaggle. The dataset is rich in recipes, including ingredients, procedures, and named entity recognition (NER) for key elements.
 	* Pre-processing: The selected dataset is extremely comprehensive with 2.2GB in size. This extremely huge dataset is not feasible to train on local computers. For this reason, a randomly selected subset of 50000 recipes has been extracted from the 1M+ recipes and the subset is used in this project.
+
 3. **Implement Experiment Tracking & Model Registry:**
 	* LSTM is trained on the selected dataset.
 	* Model's hyperparameters have been tuned, where all experiments have been saved & tracked.
 	* The best model is stored in the model registry for inference and predictions.
 	* The performance metric dictating the selection of the best model is *Mean Absolute Error*.
+
 4. **Machine Learning Workflow Orchestration:**
 	* A workflow in ML is a sequence of tasks that runs subsequently in the machine learning process. It is ensured that the pipeline is robust and can handle data preprocessing, model training, evaluation, and deployment.
-5. Deployment
+
+5. **Deploy the Model as a Web Service:**
+	* The trained model is containerized using Docker. It is deployed on AWS EC2, ensuring it is accessible to users via a web interface. The web interface is a simple Flask application.
+
 6. Monitoring
 
 
