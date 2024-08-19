@@ -69,6 +69,15 @@ Install all the tools and dependencies
 make setup_ec2
 ```
 
+Answer to the prompts/ questions that appear on the console window when the makefile is installing all the required tools and dependencies. A few examples where you feedback is inevitable are
+
+![anaconda](../images/anaconda_1.png)
+
+![anaconda](../images/anaconda_2.png)
+
+![anaconda](../images/anaconda_3.png)
+
+ 
 Configure the AWS CLI using the command `aws configure`. This is required for using & accessing the S3 bucket. You'll need to provide the `AWS_ACCESS_KEY` and `AWS_SECRET_ACCESS_KEY` along with the `AWS_REGION` and `AWS_OUTPUT_FORMAT` (optional).
     - AWS Access Key ID [None]: The access key id from IAM 
     - AWS Secret Access Key [None]: The Secret key id from IAM
