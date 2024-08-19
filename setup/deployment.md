@@ -1,7 +1,7 @@
 ## Model Deployment
 
 
-Change directory to `deployment` folder
+Change directory to `deployment`, i.e., 
 
 ```
 cd ~/personalized_recipe_recommender/deployment
