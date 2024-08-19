@@ -1,8 +1,18 @@
 ## MLflow & Prefect
 
-***DAG Flow:***
+***Workflow of Model Training, Experiment Tracking, & Model Registry:***
 
-  - TBD
+  - Load the sampled dataset that has features (X_train) from the github repo.
+  - Load the simulated user input dataset that will be used to compute labels (y_train) from the github repo.
+  - Tokenize and pad X_train to prepare it for inputting in the ML model. 
+  - Calculate the similarity scores for the simulated user input data and store them as y_train.
+  - Train the LSTM model with a variety of hyperparameters' settings to find a model that has the lowest mean absolute error.
+  - Train the model with lowest mean absolute error on all data to be ready to use in production.
+  - Register the best model and utilized tokenizer in MLflow registry. All trained model artifacts are stored in AWS S3, identified by their `run_id`. 
+  - The registered best model is the final model which is ready to be used in the production setting.
+
+
+***Procedure for Execution of the Workflow:***
 
 Change directory to `training_orchestration` folder
 
