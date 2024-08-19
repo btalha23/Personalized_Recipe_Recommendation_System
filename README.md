@@ -48,7 +48,7 @@ In today's digital age, the sheer volume of available recipes can be overwhelmin
 ![architecture](images/architecture.png)
 
 ### Exploratory Data Analysis and Initial Model Training
-The exploratory data analysis and initial model training is done in Jupyter a notebook. This notebook is available in the `notebooks` directory as [prr_data_prep_initial_model_training.ipynb](exploratory_data_analysis/prr_data_prep_initial_model_training.ipynb).
+The exploratory data analysis and initial model training is done in Jupyter a notebook. This notebook is available in the `exploratory_data_analysis` directory. [Setup](setup/exploratory_data_analysis.md).
 
 ### Training Pipeline
 
