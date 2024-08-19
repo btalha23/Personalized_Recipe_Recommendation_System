@@ -40,7 +40,7 @@ In today's digital age, the sheer volume of available recipes can be overwhelmin
 
 ### Architecture
 
-![architecture](images/architecture.png) TBD
+![architecture](images/architecture.png)
 
 ### Exploratory Data Analysis and Modeling
 TBD
