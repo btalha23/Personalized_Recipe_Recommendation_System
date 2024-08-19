@@ -71,3 +71,27 @@ The exploratory data analysis and initial model training is done in Jupyter a no
 ![S3](images/S3_2.png)
 
 ![S3](images/S3_3.png)
+
+## Setup
+
+**WARNING: You will be charged for all the infra setup. You can try free trials or 12 months free tier on AWS.**
+### Pre-requisites
+
+If you already have an Amazon Web Services account, you can skip the pre-requisite steps.
+
+- Amazon Web Services: [AWS Account and Access Setup](setup/aws_account.md)
+
+### Get Going
+
+- SSH into your Virtual Machine (EC2 Instance) - [Setup](setup/ssh_ec2.md)
+- Setup MLflow and Prefect on Virtual Machine to trigger the training pipeline - [Setup](setup/mlflow_prefect.md)
+- Flask application deployment - [Setup](setup/deployment.md)
+- Basic model monitoring - [Setup](setup/monitoring.md)
+
+### Further Improvement
+
+- Include proper and advanced model monitoring
+- Use IaC tools for provisioning the infrastructure
+
+### Special Mentions
+I'd like to acknowledge the efforts of the [DataTalks.Club](https://datatalks.club) team for offering this MLOps course at absolutely no costs. There is no doubt about it that I have learnt a lot. This hands-on project enabled me to apply what I learnt during the course. [MLOps Zoomcamp](https://github.com/DataTalksClub/mlops-zoomcamp) a highly recommended course to everybody who is interested in developing their skills in MLOps technologies, please check out the 
