@@ -13,11 +13,13 @@ from keras_preprocessing.sequence import pad_sequences
 
 # MLflow settings
 S3_BUCKET_NAME = "prr-mlops-project-mlflow-artifacts"
-MLFLOW_TRACKING_URI = 'http://127.0.0.1:5000'
 EXPERIMENT_NAME = "Personalized Recipe Recommender"
-mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
-experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
-EXPERIMENT_ID = experiment.experiment_id
+EXPERIMENT_ID = 1
+# MLFLOW_TRACKING_URI = 'http://127.0.0.1:5000'
+# EXPERIMENT_NAME = "Personalized Recipe Recommender"
+# mlflow.set_tracking_uri(MLFLOW_TRACKING_URI)
+# experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
+# EXPERIMENT_ID = experiment.experiment_id
 
 RUN_ID = '2b7194fa40cc4407831fdd70138a59c4'
 
