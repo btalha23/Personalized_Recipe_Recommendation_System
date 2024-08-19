@@ -25,6 +25,7 @@ Open a new terminal and run the following to start the MLflow tracking server
 ```
 mlflow server --backend-store-uri sqlite:///mlflow.db --default-artifact-root s3://prr-mlops-project-mlflow-artifacts
 ```
+Note that `prr-mlops-project-mlflow-artifacts` is the name of your S3 bucket. Furthermore, in order to allow access to this bucket from MLflow, IAM permissions with this bucket need to be set. For more information, please refer to to the document [here](setup/iam_s3_bucket_permissions.md).
 
 Open a new terminal to start `prefect` server by executing
 
