@@ -17,7 +17,7 @@ EXPERIMENT_NAME = "Personalized Recipe Recommender"
 experiment = mlflow.get_experiment_by_name(EXPERIMENT_NAME)
 EXPERIMENT_ID = experiment.experiment_id
 
-RUN_ID = '22178b67206c480fa6f91ae81bb158d3'
+RUN_ID = '2b7194fa40cc4407831fdd70138a59c4'
 
 def load_logged_model(RUN_ID):
 
