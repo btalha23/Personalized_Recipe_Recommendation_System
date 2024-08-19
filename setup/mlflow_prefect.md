@@ -87,8 +87,8 @@ The training model's artifacts can be browsed through via the MLflow UI:
 
 The training pipeline/ Prefect deployment stores the artifacts in S3 bucket:
 
-![s3](../images/s3_1.png)
+![s3](../images/S3_1.png)
 
-![s3](../images/s3_2.png)
+![s3](../images/S3_2.png)
 
-![s3](../images/s3_3.png)
+![s3](../images/S3_3.png)
