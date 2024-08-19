@@ -29,6 +29,8 @@ In today's digital age, the sheer volume of available recipes can be overwhelmin
 5. **Deploy the Model as a Web Service:**
 	* The trained model is containerized using Docker. It is deployed on AWS EC2, ensuring it is accessible to users via a web interface. The web interface is a simple Flask application.
 
+6. **Model Monitoring:**
+	* Basic model monitoring that calculates and reports metrics like e.g., number of drifted columns, the drift score etc. has been included in this project. 
 
 ### Tools & Technologies
 
@@ -37,6 +39,7 @@ In today's digital age, the sheer volume of available recipes can be overwhelmin
 - Workflow Orchestration - [**Prefect**](https://www.prefect.io/)
 - Experiment Tracking & Model Management - [**MLflow**](https://mlflow.org/)
 - Model Artifacts Storage - [**Amazon S3**](https://aws.amazon.com/s3/)
+- Model monitoring - [**Evidently AI**](https://www.evidentlyai.com/)
 - Language - [**Python**](https://www.python.org)
 
 
@@ -45,7 +48,7 @@ In today's digital age, the sheer volume of available recipes can be overwhelmin
 ![architecture](images/architecture.png)
 
 ### Exploratory Data Analysis and Initial Model Training
-The exploratory data analysis and initial model training is done in Jupyter a notebook. This notebook is available in the `notebooks` directory as [prr_data_prep_initial_model_training.ipynb](notebooks/prr_data_prep_initial_model_training.ipynb).
+The exploratory data analysis and initial model training is done in Jupyter a notebook. This notebook is available in the `notebooks` directory as [prr_data_prep_initial_model_training.ipynb](exploratory_data_analysis/prr_data_prep_initial_model_training.ipynb).
 
 ### Training Pipeline
 
