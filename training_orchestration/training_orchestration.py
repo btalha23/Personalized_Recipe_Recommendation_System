@@ -500,7 +500,7 @@ def model_experiment_tracking(X_train,
                                 with open(tokenizer_path, 'wb') as handle:
                                     pickle.dump(tokenizer_info_data, handle, protocol=pickle.HIGHEST_PROTOCOL)
                                 mlflow.log_artifact(tokenizer_path)
-                                WRITE_TOKENIZER_AS_MLFLOW_ARTIFACT = False
+                                # WRITE_TOKENIZER_AS_MLFLOW_ARTIFACT = False
             
     return run_id, model
 
@@ -565,6 +565,9 @@ def train_all_data(S3_BUCKET_NAME,
 
     logged_model = f's3://{S3_BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/model'
     model = mlflow.keras.load_model(logged_model)
+    required_tokenizer = f's3://{S3_BUCKET_NAME}/{EXPERIMENT_ID}/{RUN_ID}/artifacts/tokenizer_info.pickle'
+    tokenizer_path = mlflow.artifacts.download_artifacts(required_tokenizer)
+    
 
     with mlflow.start_run() as run:
         
@@ -576,6 +579,7 @@ def train_all_data(S3_BUCKET_NAME,
 
         mlflow.set_tag("model", tag_value)
         mlflow.keras.log_model(model, "model")
+        mlflow.log_artifact(tokenizer_path)
 
         logger.info("Completed training process...")
 
