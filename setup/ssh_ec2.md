@@ -16,6 +16,18 @@ Create a config file in your `.ssh` folder
 code ~/.ssh/config
 ```
 
+Alternate way of creating the config file in your `.ssh` folder is
+
+```
+touch config
+```
+
+For opening the config file, you can use the command
+
+```
+nano config
+```
+
 Copy the following snippet and replace with External IP of the Virtual Machine. Username and path to the ssh private key
 
 ```bash
@@ -25,14 +37,15 @@ Host prr-mlops-project
     IdentityFile ~/.ssh/<key_pair_name>.pem
     StrictHostKeyChecking no
 ```
+For saving the changes to the config file press `CTRL+O`. It will then ask you to confirm that you want to save the file. At this time, hit `ENTER`. To exit this file press `CTRL+X`.
 
-Once you are setup, you can simply SSH into the servers using the below commands in separate terminals. Do not forget to change the IP address of VM restarts.
+After making these changes to `.ssh/config` file, you can SSH into the server using the command below. You can ssh into the server from different terminal windows. Just remember to change the IP address of the EC2 instance every time it restarts.
 
 ```bash
 ssh prr-mlops-project
 ```
 
-You will have to forward ports from your VM to your local machine for you to be able to see Prefet UI. Check how to do that [here](https://youtu.be/ae-CV2KfoN0?t=1074)
+Exploiting the concepts of port forwarding, it is possible to see the results of MLflow experiment tracking and Prefect workflow orchestration. Please refer to [this video by Alexey](https://youtu.be/IXSiYkP23zo?si=D1v6gBw-EZHnW5_V) from the timestamp 11.49 onwards to learn how to setup port forwarding.
 
 ## Virtual Machine EC2 SSH Setup
 
@@ -56,7 +69,8 @@ Install all the tools and dependencies
 make setup_ec2
 ```
 
-- Configure the AWS CLI using the command `aws configure`. You'll need to provide the `AWS_ACCESS_KEY` and `AWS_SECRET_ACCESS_KEY` along with the `AWS_REGION` and `AWS_OUTPUT_FORMAT` (optional). 
+Configure the AWS CLI using the command `aws configure`. This is required for using & accessing the S3 bucket. You'll need to provide the `AWS_ACCESS_KEY` and `AWS_SECRET_ACCESS_KEY` along with the `AWS_REGION` and `AWS_OUTPUT_FORMAT` (optional).
     - AWS Access Key ID [None]: The access key id from IAM 
     - AWS Secret Access Key [None]: The Secret key id from IAM
-    - default region name should be the similar format as: `eu-north-1`
+
+If you are not sure how to get/ where to find the required keys, please refer to the document [here](setup/aws_account.md).
